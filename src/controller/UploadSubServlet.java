@@ -36,7 +36,6 @@ public class UploadSubServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("abc 1");
 		String fileName = request.getParameter("fileName");
 		if (fileName == null || fileName.equals("")) {
 			throw new ServletException("File Name can't be null or empty");
@@ -72,7 +71,6 @@ public class UploadSubServlet extends HttpServlet {
 		if (!ServletFileUpload.isMultipartContent(request)) {
 			throw new ServletException("Content type is not multipart/form-data");
 		}
-		System.out.println("abc 2");
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.write("<html><head></head><body>");
@@ -89,6 +87,7 @@ public class UploadSubServlet extends HttpServlet {
 				File file = new File(request.getServletContext().getRealPath("") + File.separator + fileItem.getName());
 
 				System.out.println("Absolute Path at server=" + file.getAbsolutePath());
+				
 				fileItem.write(file);
 				out.write("File " + fileItem.getName() + " uploaded successfully.");
 				out.write("<br>");

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Data;
+import modelBO.addDataBO;
 
 @WebServlet("/GetLinkServlet")
 public class GetLinkServlet extends HttpServlet {
@@ -21,8 +22,13 @@ public class GetLinkServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pathLink = request.getParameter("link");
-		String nameOfSub = request.getParameter("fileName");
-		Data data = new Data(pathLink,nameOfSub);
+		String fileName = request.getParameter("fileName");
+	
+		//add vao db
+		addDataBO bo = new addDataBO();
+		bo.addData(pathLink, fileName);
+		//request cho trang video
+		Data data = new Data(pathLink,fileName);
 		request.getSession().setAttribute("data", data);
 		request.getRequestDispatcher("Video.jsp").forward(request, response);
 	}

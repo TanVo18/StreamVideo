@@ -15,7 +15,7 @@
     <input type="text" name="link" > 
     <p>Name Of Sub File</p> <br>
     <input type="text" name="fileName"> 
-    <input type="submit" name="login" class="login login-submit" value="Submit">
+    <input type="submit" name="submit" class="login login-submit" value="Submit">
   </form>
     
 

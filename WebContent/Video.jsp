@@ -10,10 +10,15 @@
 <body>
 
 <% Data l = (Data)session.getAttribute("data"); %>
-<video src="<%=l.getPathLink() %>"  width="500" height="300" controls>
-    <track src="<%=request.getContextPath() %>/<%=l.getSubName()%>.vtt" label="English"  kind="subtitles" srclang="en" default/>
-    Your browser does not support the <video> element.  
-  </video>
 
+<div class="login-card">
+
+ <video src="<%=l.getPathLink() %>"  width="500" height="300" controls>
+<track src="<%=request.getContextPath() %>/<%=l.getSubName()%>.vtt" label="English"  kind="subtitles" srclang="en" default/>
+Your browser does not support the <video> element.  
+</video>
+   
+</div>
+<link rel="stylesheet" href="styleVideo.css" />
 </body>
 </html>
